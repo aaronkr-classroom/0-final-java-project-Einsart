@@ -24,13 +24,16 @@ public class welcome {
 			System.out.println("************************************************");
 			System.out.println("\t" + greeting);
 			System.out.println("\t" + tagline);
+			/*
 			System.out.println("************************************************");
-			
 			System.out.println("1. 고객 정보 확인하기 \t5. 바구니에 항목 추가하기");
 			System.out.println("2. 장바구니 상품 목록 보기\t6. 장바구니에 항목 수량 줄이기");
 			System.out.println("3. 장바구니 비우기\t7. 장바구니에 항목 삭제하기");
 			System.out.println("4. 영수증 표시하기\t8. 종료");
 			System.out.println("************************************************");
+			*/
+			
+			menuIntro();
 			
 			System.out.println("메뉴 번호를 선택하세요: ");
 			int choice = input.nextInt();
@@ -40,29 +43,30 @@ public class welcome {
 			} else {
 				switch(choice) {
 				case 1:
-					System.out.println("현재 고객 정보: ");
-					System.out.println("이름 " + name + "연락처" + phone);
+//					System.out.println("현재 고객 정보: ");
+//					System.out.println("이름 " + name + "연락처" + phone);
+					menuinfo(name, phone);
 					break;
 				case 2:
-					System.out.println("장바구니 상품 목록 보기");
+					menucartitemlist();
 					break;
 				case 3:
-					System.out.println("장바구니 비우기");
+					menucartclear();
 					break;
 				case 4:
-					System.out.println("영수증 표시하기");
+					menucartbill();
 					break;
 				case 5:
-					System.out.println("바구니에 항목 추가하기: ");
+					menucartadditem();
 					break;
 				case 6:
-					System.out.println("장바구니에 항목 수량 줄이기: ");
+					menucartremoveitemcount();
 					break;
 				case 7:
-					System.out.println("장바구니에 항목 삭제하기: ");
+					menucartremoveitem();
 					break;
 				case 8:
-					System.out.println("종료");
+					menucartexit();
 					quit = true;
 					break;
 					
@@ -70,5 +74,67 @@ public class welcome {
 			} // else 끝
 		} // while 끝
 	} //main 끝
+	
+	/**
+	 * 설명: Print menu
+	 * 매개변수: 
+	 * 반환값:
+	 */
+	public static void menuIntro() {
+		System.out.println("************************************************");
+		System.out.println("1. 고객 정보 확인하기 \t5. 바구니에 항목 추가하기");
+		System.out.println("2. 장바구니 상품 목록 보기\t6. 장바구니에 항목 수량 줄이기");
+		System.out.println("3. 장바구니 비우기\t7. 장바구니에 항목 삭제하기");
+		System.out.println("4. 영수증 표시하기\t8. 종료");
+		System.out.println("************************************************");
+		
+	
+	}
+	
+	/**
+	 * 설명: 고객 정보 출력
+	 * 매개변수: 
+	 * 	-String  	name 고객 이름
+	 * 	-int 		phone	휴대전화번호
+	 * 반환값:
+	 */
+	public static void menuinfo(String name, int phone) {
+		System.out.println("현재 고객 정보: ");
+		System.out.println("이름 " + name + "연락처" + phone);
+	}
+	
+	/**
+	 * 설명: 2번 
+	 * 매개변수: 
+	 * 반환값:
+	 */
+	public static void menucartitemlist() {
+		System.out.println("2. 장바구니 상품 목록 보기");
+	
+	}
+	public static void menucartclear() {
+		System.out.println("3. 장바구니 비우기");
 
-} //welcome 끝
+	
+	}
+	public static void menucartadditem() {
+		System.out.println("5. 바구니에 항목 추가하기: ");
+	
+	}
+	public static void menucartremoveitemcount() {
+		System.out.println("6. 장바구니에 항목 수량 줄이기: ");
+	
+	}
+	public static void menucartremoveitem() {
+		System.out.println("7. 장바구니에 항목 삭제하기: ");
+	
+	}
+	public static void menucartbill() {
+		System.out.println("4. 영수증 표시하기");
+	
+	}
+	public static void menucartexit() {
+		System.out.println("8. 종료");
+	
+	}
+	} //welcome 끝
