@@ -1,8 +1,12 @@
 import java.util.Scanner;
 
 public class welcome {
+	static final int NUM_BOOK = 3;
+	static final int NUM_ITEM = 7;
 
 	public static void main(String[] args) {
+		String[][] mBook = new String[NUM_BOOK] [NUM_ITEM];
+		
 		Scanner input = new Scanner(System.in);
 		
 		System.out.print("Type your name: ");
@@ -137,4 +141,36 @@ public class welcome {
 		System.out.println("8. 종료");
 	
 	}
+	
+	public static void booklist(String[][] book) {
+		
+		book[0][0] ="IDSA1234";
+		book[0][1] ="쉽게 배우는 웹프로그래밍";
+		book[0][2] ="2700";
+		book[0][3] ="송미영";
+		book[0][4] ="단꼐별로 쇼핑몰을";
+		book[0][5] ="IT전문서";
+		book[0][6] ="2018/10/08";
+		
+		book[1][0] ="SOFQF1234";
+		book[1][1] ="쉽게 배우는 웹";
+		book[1][2] ="3700";
+		book[1][3] ="우재남";
+		book[1][4] ="단꼐별로 멘토링";
+		book[1][5] ="IT전문서";
+		book[1][6] ="2022/01/22";
+		
+		book[2][0] ="IDSA1235";
+		book[2][1] ="스크래치";
+		book[2][2] ="2200";
+		book[2][3] ="고광일";
+		book[2][4] ="단꼐별로 컴퓨터";
+		book[2][5] ="컴퓨터입문";
+		book[2][6] ="2019/10/08";
+		
+		
+	}
+	
+	
+	
 	} //welcome 끝
