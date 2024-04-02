@@ -3,14 +3,16 @@ import java.util.Scanner;
 public class welcome {
 	static final int NUM_BOOK = 3;
 	static final int NUM_ITEM = 7;
+	static CartItem[] mCartItem = new CartItem[NUM_BOOK];
+	static int mCartcount = 0;
 
 	public static void main(String[] args) {
 		String[][] mBook = new String[NUM_BOOK] [NUM_ITEM];
 		
 		Scanner input = new Scanner(System.in);
 		
-		System.out.print("Type your name: ");
-		String name = input.next();
+		System.out.print("당신의 이름을 입력하세요: ");
+		String userName = input.next();
 		
 		System.out.print("연락처를 입력하세요: ");
 		int phone = input.nextInt(); // 숫자만
@@ -49,10 +51,10 @@ public class welcome {
 				case 1:
 //					System.out.println("현재 고객 정보: ");
 //					System.out.println("이름 " + name + "연락처" + phone);
-					menuinfo(name, phone);
+					menuInfo(userName, phone);
 					break;
 				case 2:
-					menucartitemlist();
+					menuCartItemList();
 					break;
 				case 3:
 					menucartclear();
@@ -98,13 +100,13 @@ public class welcome {
 	/**
 	 * 설명: 고객 정보 출력
 	 * 매개변수: 
-	 * 	-String  	name 고객 이름
+	 * 	-String  	userName 고객 이름
 	 * 	-int 		phone	휴대전화번호
 	 * 반환값:
 	 */
-	public static void menuinfo(String name, int phone) {
+	public static void menuInfo(String userName, int phone) {
 		System.out.println("현재 고객 정보: ");
-		System.out.println("이름 " + name + "연락처" + phone);
+		System.out.println("이름 " + userName + "연락처" + phone);
 	}
 	
 	/**
@@ -112,8 +114,17 @@ public class welcome {
 	 * 매개변수: 
 	 * 반환값:
 	 */
-	public static void menucartitemlist() {
-		System.out.println("2. 장바구니 상품 목록 보기");
+	public static void menuCartItemList() {
+		System.out.println("2. 장바구니 상품 목록 ");
+		System.out.println("-----------------------------------------");
+		System.out.println("  도서 id \t| 수량\t| 합계");
+		for (int i = 0; i < mCartCount; i++) {
+			System.out.println(" " + mCartItem[i].getBookID()+ "\t|");
+			System.out.println(" " + mCartItem[i].getQuantity()+ "\t|");
+			System.out.println(" " + mCartItem[i].getTotalPrice());
+			System.out.println(" ");
+		}
+		System.out.println("-----------------------------------------");
 	
 	}
 	public static void menucartclear() {
@@ -136,7 +147,6 @@ public class welcome {
 		
 		while (!quit) {
 			System.out.print("장바구니에 추가할 도서의 ID를 입력하세요: ");
-			
 			Scanner input = new Scanner(System.in);
 			String str = input.nextLine();
 			
@@ -157,6 +167,9 @@ public class welcome {
 				
 				if(str.toUpperCase().equals("Y")) {
 					System.out.println(book[numId][0]+ "도서가 장바구니에 추가되었습니다");
+					//장바구니에 넣기
+					if (!isCartInBook(book[numId][0]))
+						mCartItem[mCartCount++] = new CartItem(book[numId]);
 				}
 				quit = true;
 			} else
